@@ -1,0 +1,98 @@
+body {
+    background-color: #f0efef;
+    font-family: Arial, sans-serif;
+}
+
+/* add book */
+.custom-btn,
+.card-header {
+    background-color: rgb(63, 94, 94);
+}
+
+.custom-btn:hover,
+.custom-btn:focus {
+    background-color: rgb(16, 71, 71) !important;
+}
+
+.custom-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    padding: 6px 13px 6px 37px;
+    margin: 0 0 7px;
+    cursor: pointer;
+}
+
+
+/* view book */
+.sidebar {
+    height: 100vh;
+    background: #2c3e50;
+    color: white;
+    position: fixed;
+    width: 240px;
+    top: 0;
+    left: 0;
+    padding: 15px;
+}
+
+.sidebar .nav-link {
+    color: #dddddd;
+    margin: 1px 0;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background: #697786c0;
+    border-radius: 6px;
+}
+
+.content {
+    margin: 20px 20px 0 260px;
+}
+
+.table-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+}
+
+/* read single book */
+.read-body {
+    background: #e9e8e8;
+}
+
+.back-btn {
+    top: 15px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+.book-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.badge-custom {
+    background: #ac7935;
+    font-size: 14px;
+    padding: 6px 12px;
+}

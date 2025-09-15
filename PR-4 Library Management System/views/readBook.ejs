@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="read-body">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="shadow-lg rounded-5 bg-white overflow-hidden">
+
+                    <div class="position-relative">
+                        <img src="<%= readBook.image %>" alt="Book Image" class="w-100 object-fit-cover"
+                            style="height: 400px;">
+                        <a href="/"
+                            class="back-btn position-absolute text-white d-flex justify-content-center fs-4">←</a>
+                    </div>
+
+                    <div class="p-4">
+                        <h2 class="mb-3 fw-bold">
+                            <%= readBook.title %>
+                        </h2>
+                        <p class="mb-4">
+                            <%= readBook.description %> This book brings knowledge, imagination, and inspiration
+                                together. It engages readers with meaningful insights, enjoyable storytelling, and
+                                lasting impact, making every page worth reading and exploring deeply.
+                        </p>
+
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <span class="detail-label">Author:</span>
+                                <p>
+                                    <%= readBook.author %>
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="detail-label">ISBN:</span>
+                                <p>
+                                    <%= readBook.isbn %>
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="detail-label">Genre:</span>
+                                <p>
+                                    <% readBook.genre.map((genre)=>{ %>
+                                        <span class="badge badge-custom mt-1">
+                                            <%= genre %>
+                                        </span>
+                                        <% }) %>
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="detail-label">Total Books:</span>
+                                <p class="ps-1">
+                                    <%= readBook.total %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
