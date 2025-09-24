@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVHvt4wX2nr1yEDf17Hy8nfTy2wY6H9tIL-SwJRRETtbq3AQv9z5YM6L29Ygwr3RXUmnk&usqp=CAU"
+            alt="Logo" width="150" height="70" style="cursor: pointer;">
+        <div class="menu">
+            <a href="#">Product</a>
+            <a href="#">Solutions</a>
+            <a href="#">Resources</a>
+            <a href="#">Pricing</a>
+        </div>
+        <a href="/addBlog" style="text-decoration: none;" class="btn">Add Blog</a>
+    </div>
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+    </div>
+    <div class="cards">
+        <% fetchBlogData.map((blog)=>{ %>
+            <div class="card">
+                <a href="/deleteBlog/<%= blog.id %>" class="delete-btn">✖</a>
+                <img src="<%= blog.image %>">
+                <div class="card-content">
+                    <span class="tag">
+                        <%= blog.title %>
+                    </span>
+                    <h3>
+                        <%= blog.description %>
+                    </h3>
+                    <div class="tags">
+                        <% blog.category.map((category)=> { %>
+                            <span>
+                                <%= category %>
+                            </span>
+                            <% }) %>
+                    </div>
+                </div>
+                <a href="/readBlog/<%= blog.id %>" style="text-decoration: none;" class="read-btn">Read more</a>
+            </div>
+            <% }) %>
+    </div>
+
+</body>
+
+</html>

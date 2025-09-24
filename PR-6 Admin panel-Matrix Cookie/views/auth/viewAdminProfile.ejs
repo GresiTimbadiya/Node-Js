@@ -1,0 +1,100 @@
+<%- include('../header') %>
+    <style>
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+        }
+
+        .card-centered {
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .field-label {
+            font-weight: 700;
+            font-size: 15px;
+            color: #495057;
+            min-width: 100px;
+        }
+
+        .value-text {
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 15px;
+            border-bottom: 1.5px solid #bfc7f3;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .row-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+    </style>
+    <div class="container">
+        <div class="card card-centered shadow" style="margin-left: 270px;">
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <img src="<%= adminData.profile %>" alt="Profile Pic"
+                        class="profile-pic mb-3 shadow rounded-circle">
+                    <h4 class="mb-0">
+                        <%= adminData.name %>
+                    </h4>
+                    <p class="text-muted">Admin</p>
+                </div>
+
+                <% var name=adminData.name.split(" "); %>
+                    <div class=" row">
+                    <div class="col-md-6 pr-0">
+                        <div class="row-item">
+                            <span class="field-label">First Name:</span>
+                            <span class="value-text">
+                                <%= name[0] %>
+                            </span>
+                        </div>
+                        <div class="row-item">
+                            <span class="field-label">Last Name:</span>
+                            <span class="value-text">
+                                <%= name[1] %>
+                            </span>
+                        </div>
+                        <div class="row-item">
+                            <span class="field-label">Email:</span>
+                            <span class="value-text">
+                                <%= adminData.email %>
+                            </span>
+                        </div>
+                        <div class="row-item">
+                            <span class="field-label">Gender:</span>
+                            <span class="value-text">
+                                <%= adminData.gender %>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 pl-0">
+                        <div class="row-item">
+                            <span class="field-label">Qualification:</span>
+                            <span class="value-text">
+                                <%= adminData.qualification.join(", ") %></span>
+                            </div>
+                            <div class=" row-item">
+                                    <span class="field-label">City:</span>
+                                    <span class="value-text">
+                                        <%= adminData.city %>
+                                    </span>
+                        </div>
+                        <div class="row-item">
+                            <span class="field-label">Message:</span>
+                            <span class="value-text">
+                                <%= adminData.message %>
+                            </span>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <%- include('../footer') %>

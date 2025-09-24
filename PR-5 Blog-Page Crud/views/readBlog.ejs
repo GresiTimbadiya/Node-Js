@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Blog Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+        }
+
+        .blog-hero {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .blog-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero-overlay h1 {
+            font-size: 36px;
+            margin: 0 0 15px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-overlay .categories span {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 7px 18px;
+            margin: 0 5px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .blog-content {
+            max-width: 850px;
+            margin: 0 auto 50px auto;
+            background: #fff;
+            border-radius: 20px;
+            padding: 15px 35px 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            line-height: 1.8;
+            font-size: 17px;
+            color: #444;
+        }
+
+        .blog-content p {
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #ff6600;
+            color: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-btn:hover {
+            background: #e65c00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        @media(max-width:768px) {
+            .blog-hero {
+                height: 300px;
+            }
+
+            .hero-overlay h1 {
+                font-size: 28px;
+            }
+
+            .blog-content {
+                padding: 25px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="blog-hero">
+        <img src="<%= readBlog.image %>" alt="Blog Image">
+        <div class="hero-overlay">
+            <h1>
+                <%= readBlog.title %>
+            </h1>
+            <div class="categories">
+                <% readBlog.category.map((category)=> { %>
+                    <span>
+                        <%= category %>
+                    </span>
+                    <% }) %>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-content">
+        <p>
+            <%= readBlog.description %>
+        </p>
+        <p>This blog serves as a hub for knowledge, creativity, and exploration. Whether it’s understanding the latest
+            trends in technology, improving lifestyle habits, exploring design ideas, or learning about content and
+            social media, our posts are crafted to inform and engage.</p>
+        <p>Here, you’ll find thoughtful insights, practical tips, and the latest trends across various fields including
+            technology, design, lifestyle, content creation, social media, and research. Our goal is to provide valuable
+            knowledge and perspectives that cater to curious minds, helping everyone learn, explore, and stay updated in
+            an ever-changing world. it a space for discovery, growth, and inspiration.</p>
+
+        <a href="/" class="back-btn">Back to Blogs</a>
+    </div>
+
+</body>
+
+</html>

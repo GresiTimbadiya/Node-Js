@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="body">
+    <div class="form-container">
+        <div class="form-header">Create New Blog</div>
+        <form class="form-body" action="/addBlogData" method="post" enctype="multipart/form-data">
+            <label>Title:</label>
+            <input type="text" name="title" placeholder="Enter blog title">
+
+            <label>Description:</label>
+            <textarea name="description" placeholder="Write your blog summary or content..." rows="5"></textarea>
+
+            <label>Category:</label>
+            <div class="category-options">
+                <label><input type="checkbox" name="category" value="Lifestyle" /> Lifestyle</label>
+                <label><input type="checkbox" name="category" value="Digital Tools" /> Digital Tools</label>
+                <label><input type="checkbox" name="category" value="Social Media" /> Social Media</label>
+                <label><input type="checkbox" name="category" value="Research" /> Research</label>
+                <label><input type="checkbox" name="category" value="Psychological Safety" /> Psychological Safety</label>
+                <label><input type="checkbox" name="category" value="Technology" /> Technology</label>
+            </div>
+
+            <label>Image:</label>
+            <div class="file-upload">
+                <label for="imageUpload">Choose Image</label>
+                <input type="file" name="image" id="imageUpload" class="image-up">
+            </div>
+
+            <div class="form-footer">
+                <input type="submit" value="Publish Blog" class="addBtn publish-btn"></input>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
