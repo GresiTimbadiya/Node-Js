@@ -1,0 +1,75 @@
+<%- include('../header') %>
+
+
+    <div class="page-wrapper">
+
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <form class="form-horizontal" action="/subCategory/updateSubCategory/<%= singleSubCat.id %>" method="post">
+                            <div class="card-body pb-0 pr-0">
+                                <h4 class="card-title text-center mb-4">Edit Sub Category</h4>
+                                <div class="col-md-9">
+                                    <div class="form-group row">
+                                        <label for="fname"
+                                            class="col-sm-6 text-right control-label col-form-label">Category
+                                            Name</label>
+                                        <div class="col-sm-6 p-0">
+                                            <select name="category" class="select2 form-control custom-select"
+                                                style="width: 190px;" disabled>
+                                                <option>--Select subcategory--</option>
+                                                <% categories.map(val=> { %>
+                                                    <option value="<%= val._id %>"
+                                                        <%=(singleSubCat.category._id.toString()===val._id.toString())
+                                                        ? "selected" : "" %>>
+                                                        <%= val.categoryName %>
+                                                    </option>
+                                                    <% }) %>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group row">
+                                        <label for="fname"
+                                            class="col-sm-6 text-right control-label col-form-label">SubCategory
+                                            Name</label>
+                                        <div class="col-sm-6 p-0">
+                                            <input type="text" class="form-control" name="subCategoryName"
+                                                style="width: 190px;" id="fname"
+                                                value="<%= singleSubCat.subCategoryName %>"
+                                                placeholder="Sub Category Name...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-top">
+                                <div class="card-body">
+                                    <input type="submit" class="btn btn-success mx-auto d-block"
+                                        value="Update Sub Category" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <%- include('../footer') %>

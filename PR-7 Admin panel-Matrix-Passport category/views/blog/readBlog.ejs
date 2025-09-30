@@ -1,0 +1,37 @@
+<%- include('../header') %>
+    <div class="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="col-6 justify-content-center mb-4">
+                <a href="/admin/blog" class="btn btn-primary">
+                    ← Back to Blogs
+                </a>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-md-10 col-sm-12">
+                    <div class="card shadow-sm">
+                        <img src="<%= readBlog.image %>" class="card-img-top" style="height:300px;" alt="Blog Image">
+
+                        <div class="card-body">
+                            <p class="card-text"> <strong class="text-dark">Title :-</strong>
+                                <%= readBlog.title %>
+                            </p>
+                            <p class="card-text"> <strong class="text-dark">Category :-</strong>
+                                <%= readBlog.category %>
+                            </p>
+                            <p class="card-text"><strong class="text-dark">Create Date :-</strong>
+                                <%=readBlog.date%>
+                            </p>
+                            <p class="card-text"> <strong class="text-dark">Description :-</strong>
+                                <%= readBlog.description %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include('../footer') %>

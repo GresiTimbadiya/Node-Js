@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Our Blogs</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .blog-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #343a40;
+        }
+
+        .blog-meta {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .read-more {
+            color: #0d6efd;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">MyBlogSite</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blog Section -->
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-dark">Latest Blogs</h1>
+            <p class="text-muted">Stay updated with our latest articles and insights.</p>
+        </div>
+
+        <div class="row g-4">
+            <% showData.map((val)=>{ %>
+                <div class="col-md-4">
+                    <div class="card blog-card">
+                        <img src="<%= val.image %>" class="card-img-top blog-img" alt="Blog 1">
+                        <div class="card-body">
+                            <h5 class="blog-title"><%= val.title %></h5>
+                            <p class="blog-meta"><%= val.date %></p>
+                            <p class="card-text text-muted"> <%= val.description %></p>
+                            <a href="/blogReadMore/<%= val.id %>" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3 text-center">
+        <p class="mb-0">© 2025 MyBlogSite. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
