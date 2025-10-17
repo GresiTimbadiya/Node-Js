@@ -9,14 +9,12 @@
             </div>
 
             <div class="card shadow border-0 p-4 mx-auto" style="background: #fff; width: 87%;">
-                <div class="row align-items-center gx-5"> <!-- gx-5 = horizontal gap between columns -->
-                    <!-- Left Side: Product Image -->
+                <div class="row align-items-center gx-5"> 
                     <div class="col-lg-6 col-md-6 col-sm-12 text-center">
                         <img src="<%= singleProduct.image %>" alt="Product Image" class="img-fluid rounded"
                             style="height: 350px; width: 98%;">
                     </div>
 
-                    <!-- Right Side: Product Details -->
                     <div class="col-lg-6 col-md-6 col-sm-12 pl-5">
                         <h3 class="fw-bold text-dark mb-3">
                             <%= singleProduct.title %>
@@ -40,10 +38,6 @@
                         <div class="border-top pt-3 mb-3">
                             <h4 class="text-success mb-2">
                                 ₹ <%= singleProduct.price %>
-                                    <small class="text-decoration-line-through text-muted ms-2">
-                                        ₹<%= Math.round(singleProduct.price + (singleProduct.price *
-                                            singleProduct.discount / 100)) %>
-                                    </small>
                             </h4>
                             <p class="text-danger fw-bold mb-0">
                                 <%= singleProduct.discount %>% Off
