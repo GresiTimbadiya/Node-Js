@@ -1,0 +1,50 @@
+<%- include('../header') %>
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block mb-3 align-items-center">
+                    <h4 class="page-title">Blog Details</h4>
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row g-3">
+                <% viewBlog.map((blog)=>{%>
+                    <div class="col-md-4 mb-3">
+                        <div class="card shadow-lg border-0 h-100" style="border-radius: 13px;">
+                            <img src="<%= blog.image %>" class="card-img-top" alt="Blog Image"
+                                style="border-top-left-radius: 13px; border-top-right-radius: 13px;">
+                            <div class="card-body pb-0">
+                                <h5 class="card-title text-dark">
+                                    <%= blog.title %>
+                                </h5>
+                                <p class="text-secondary mb-2">
+                                    <%= blog.description %>.
+                                </p>
+                                <p class="text-secondary mb-2"><strong class="text-dark">Date:</strong>
+                                    <%= blog.date %>
+                                </p>
+                                <p class="text-secondary mb-2"><strong class="text-dark">Category:</strong>
+                                    <%= blog.category %>
+                                </p>
+                            </div>
+                            <div class="card-footer text-end bg-white pt-0" style="border-radius: 13px;">
+                                <a href="/admin/blog/readBlog/<%= blog.id %>" class="btn btn-sm btn-success">Read more</a>
+                                <a href="/admin/blog/editBlog/<%= blog.id %>" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="/admin/blog/deleteBlog/<%= blog.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% })%>
+            </div>
+        </div>
+    </div>
+    <%- include('../footer') %>

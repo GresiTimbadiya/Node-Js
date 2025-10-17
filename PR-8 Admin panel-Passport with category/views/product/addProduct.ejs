@@ -1,0 +1,158 @@
+<%- include('../header') %>
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid pt-1">
+            <div class="row justify-content-center">
+                <div class="col-md-7">
+                    <div class="card shadow-lg">
+                        <form class="form-horizontal" action="/product/addProductData" method="post" enctype="multipart/form-data">
+                            <div class="card-body" style="padding-left: 45px; padding-right: 0px;">
+                                <h3 class="card-title text-center mr-5 mb-4">Add Product</h3>
+                                <div class="form-group row">
+                                    <label for="fname"
+                                        class="col-sm-2 px-0 text-center control-label col-form-label">Title :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="title"
+                                            placeholder="Enter product title...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="cono1"
+                                        class="col-sm-2 text-center px-0 control-label col-form-label">Description</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" name="description"
+                                            placeholder="Enter description..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-2 text-center px-0 mt-2">Category</label>
+                                    <div class="col-md-9">
+                                        <select name="category" id="category" class="form-control custom-select"
+                                            style="width: 100%; height:36px;">
+                                            <option>--Select Category--</option>
+                                            <% categories.map((val)=> { %>
+                                                <option value="<%= val.id %>">
+                                                    <%= val.categoryName %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-2 text-center px-0 mt-2">Sub Category</label>
+                                    <div class="col-md-9">
+                                        <select name="subCategory" id="subcategory" class="form-control custom-select"
+                                            style="width: 100%; height:36px;">
+                                            <option>--Select subcategory--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 text-center px-0 mt-2">Extra Category</label>
+                                    <div class="col-sm-9">
+                                        <select name="extraCategory" id="extracategory"
+                                            class="form-control custom-select" style="width: 100%; height:36px;">
+                                            <option>--Select extra category--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname"
+                                        class="col-sm-2 px-0 text-center control-label col-form-label">Price :</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" name="price"
+                                            placeholder="Enter price...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname"
+                                        class="col-sm-2 px-0 text-center control-label col-form-label">Discount :</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" name="discount"
+                                            placeholder="Enter discount...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname"
+                                        class="col-sm-2 px-0 text-center control-label col-form-label">Quantity
+                                        :</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" name="quantity"
+                                            placeholder="Enter quantity...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-2 px-0 text-center mt-2">Image</label>
+                                    <div class="col-md-9">
+                                        <div class="custom-file">
+                                            <input type="file" name="image" class="custom-file-input"
+                                                id="validatedCustomFile">
+                                            <label class="custom-file-label" for="validatedCustomFile">Choose
+                                                file...</label>
+                                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-top">
+                                <div class="card-body">
+                                    <input type="submit" value="Add Product" class="btn btn-primary d-block mx-auto" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../footer') %>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                let category = document.getElementById('category');
+                let subcategory = document.getElementById('subcategory');
+                let extracategory = document.getElementById('extracategory');
+                category.addEventListener('change', () => {
+                    let categoryId = category.value;
+                    subcategory.innerHTML = '<option>--Select subcategory--</option>';
+                    fetch(`/product/subCategory?categoryId=${categoryId}`)
+                        .then(res => res.json())
+                        .then((data) => {
+                            data.subCategory.forEach((val) => {
+                                let option = document.createElement('option');
+                                option.innerHTML = val.subCategoryName;
+                                option.setAttribute('value', val._id);
+                                subcategory.append(option);
+                            })
+                        })
+                })
+
+                subcategory.addEventListener('change', () => {
+                    let subCategoryId = subcategory.value;
+                    extracategory.innerHTML='<option>--Select extra category--</option>';
+                    fetch(`/product/extraCategory?subCategoryId=${subCategoryId}`)
+                        .then(res => res.json())
+                        .then((data) => {
+                            data.extraCategory.forEach((val) => {
+                                let option = document.createElement('option');
+                                option.innerHTML = val.extraCategoryName;
+                                option.setAttribute('value', val._id);
+                                extracategory.append(option);
+                            })
+                        })
+                })
+            })
+        </script>

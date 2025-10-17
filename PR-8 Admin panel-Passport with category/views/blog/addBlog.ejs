@@ -1,0 +1,87 @@
+<%- include('../header') %>
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid pt-1">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow-lg">
+                        <form class="form-horizontal" action="/admin/blog/addBlogData" method="post"
+                            enctype="multipart/form-data">
+                            <div class="card-body" style="padding-left: 45px; padding-right: 0px;">
+                                <h3 class="card-title text-center mr-5 mb-4">Add Blog</h3>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-2 px-0 text-center control-label col-form-label">
+                                        Blog Title</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="title"
+                                            placeholder="Enter title...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="cono1"
+                                        class="col-sm-2 text-center px-0 control-label col-form-label">Description</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" name="description"
+                                            placeholder="Enter description..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-2 text-center px-0 mt-2">Category</label>
+                                    <div class="col-md-9">
+                                        <% let
+                                            category=['Technology','Education','Business','Lifestyle','Current-Affairs'];
+                                            %>
+                                            <select name="category" class="select2 form-control custom-select"
+                                                style="width: 100%; height:36px;">
+                                                <option>--Select Category--</option>
+                                                <% category.map((cat)=> { %>
+                                                    <option value="<%= cat %>"><%= cat %></option>
+                                                    <% }) %>
+                                            </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="date" class="col-sm-2 px-0 text-center control-label col-form-label">
+                                        Blog Date</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" name="date" class="form-control" id="date">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-2 px-0 text-center mt-2">Image</label>
+                                    <div class="col-md-9">
+                                        <div class="custom-file">
+                                            <input type="file" name="image" class="custom-file-input"
+                                                id="validatedCustomFile">
+                                            <label class="custom-file-label" for="validatedCustomFile">Choose
+                                                file...</label>
+                                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-top">
+                                <div class="card-body">
+                                    <input type="submit" value="Add Blog" class="btn btn-primary d-block mx-auto" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../footer') %>

@@ -1,0 +1,73 @@
+<%- include('../header') %>
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block mb-3 align-items-center">
+                    <h4 class="page-title">Product List</h4>
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row g-3">
+                <% viewProduct.map((product)=>{%>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-lg border-0 h-100"
+                            style="border-radius: 15px; transition: transform 0.3s;">
+
+                            <img src="<%= product.image %>" class="card-img-top img-fluid bg-light" alt="<%= product.title %>"
+                                style="border-top-left-radius: 15px; border-top-right-radius: 15px; height: 200px; object-fit: contain;">
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold mb-2 text-secondary" style="font-size: 17px;">
+                                    <%= product.title %>
+                                </h5>
+
+                                <div class="mb-2 d-flex align-items-center">
+                                    <span class="text-dark mr-2" style="font-size: 23px; font-weight: bold;">₹ <%=
+                                            product.price %></span>
+                                    <% if(product.discount && product.discount> 0){ %>
+                                        <span class="ms-2 text-danger">
+                                            (<%= product.discount %>% Off)
+                                        </span>
+                                        <% } %>
+                                </div>
+
+                                <p class=" mb-2"><strong>Qty:</strong>
+                                    <%= product.quantity %> Pcs
+                                </p>
+
+                                <span class="ms-2 px-2 py-1 text-dark"
+                                    style="background-color: rgb(239, 239, 239); border-radius: 5px; font-size: 13px; width: 94px;">Free
+                                    Delivery </span>
+
+                                <div class="mt-auto d-flex justify-content-between">
+                                    <a href="/product/productDetails/<%= product.id %>"
+                                        class="btn btn-sm btn-success flex-grow-1 me-1">
+                                        Read More
+                                    </a>
+                                    <a href="/product/editProduct/<%= product.id %>"
+                                        class="btn btn-sm btn-primary flex-grow-1 mx-1">
+                                        Edit
+                                    </a>
+                                    <a href="/product/deleteProduct/<%= product.id %>"
+                                        class="btn btn-sm btn-danger flex-grow-1 ms-1">
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% })%>
+            </div>
+        </div>
+    </div>
+    <%- include('../footer') %>

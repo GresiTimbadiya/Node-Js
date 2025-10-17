@@ -1,0 +1,69 @@
+<%- include('../header') %>
+    <div class="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="col-6 justify-content-center mb-4">
+                <a href="/product/viewProduct" class="btn btn-primary">
+                    ← Back to Products
+                </a>
+            </div>
+
+            <div class="card shadow border-0 p-4 mx-auto" style="background: #fff; width: 87%;">
+                <div class="row align-items-center gx-5"> <!-- gx-5 = horizontal gap between columns -->
+                    <!-- Left Side: Product Image -->
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                        <img src="<%= singleProduct.image %>" alt="Product Image" class="img-fluid rounded"
+                            style="height: 350px; width: 98%;">
+                    </div>
+
+                    <!-- Right Side: Product Details -->
+                    <div class="col-lg-6 col-md-6 col-sm-12 pl-5">
+                        <h3 class="fw-bold text-dark mb-3">
+                            <%= singleProduct.title %>
+                        </h3>
+                        <p class="text-muted mb-4" style="font-size: 15px;">
+                            <%= singleProduct.description %>
+                        </p>
+
+                        <div class="mb-3">
+                            <p><strong class="text-dark">Category:</strong>
+                                <%= singleProduct.category.categoryName %>
+                            </p>
+                            <p><strong class="text-dark">Sub Category:</strong>
+                                <%= singleProduct.subCategory.subCategoryName %>
+                            </p>
+                            <p><strong class="text-dark">Extra Category:</strong>
+                                <%= singleProduct.extraCategory.extraCategoryName %>
+                            </p>
+                        </div>
+
+                        <div class="border-top pt-3 mb-3">
+                            <h4 class="text-success mb-2">
+                                ₹ <%= singleProduct.price %>
+                                    <small class="text-decoration-line-through text-muted ms-2">
+                                        ₹<%= Math.round(singleProduct.price + (singleProduct.price *
+                                            singleProduct.discount / 100)) %>
+                                    </small>
+                            </h4>
+                            <p class="text-danger fw-bold mb-0">
+                                <%= singleProduct.discount %>% Off
+                            </p>
+                        </div>
+
+                        <p class="mb-4"><strong class="text-dark">Available Quantity:</strong>
+                            <%= singleProduct.quantity %>
+                        </p>
+
+                        <div class="mt-3">
+                            <a href="/product/editProduct/<%= singleProduct.id %>" class="btn btn-success btn px-4 mr-3">Edit
+                            </a>
+                            <a href="/product/deleteProduct/<%= singleProduct.id %>" class="btn btn-danger btn px-4">Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../footer') %>
